@@ -18,5 +18,14 @@ module.exports.policies = {
 
   // '*': true,
   "user/*": "is-logged-in",
-  "user/logout": "is-logged-in",
+
+  // organization
+  "organization/*": "is-org-member",
+
+  // responses
+  "response/*": "is-public-endpoint",
+
+  // plugins
+  "plugins/list": "is-public-endpoint",
+  "plugins/auth/*": "is-from-plugin",
 };

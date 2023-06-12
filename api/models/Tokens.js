@@ -25,7 +25,6 @@ module.exports = {
     await sails.config.redisClient.del(key);
   },
   findOne: async ({ user, token }) => {
-    console.log(user, token);
     const key = `${user}-${token}`;
     return sails.helpers.redis.get(key);
   },

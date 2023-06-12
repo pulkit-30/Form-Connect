@@ -1,39 +1,36 @@
 /**
- * UserOrgRoles.js
- *
+ * FormPlugins.js
  */
-
 module.exports = {
   attributes: {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    role: {
-      type: "string",
+    organization: {
+      model: "organizations",
       required: true,
-      isIn: Object.values(sails.config.globals.USER_ROLES),
-      description: "Role of the user for an organization.",
+      description: "The organization that owns the form plugin.",
+    },
+    plugin: {
+      model: "plugins",
+      required: true,
+      description: "The plugin that is used in the form.",
+    },
+    form: {
+      model: "forms",
+      required: true,
+      description: "The form that uses the plugin.",
     },
     meta: {
       type: "json",
+      description: "The meta data of the plugin.",
       defaultsTo: {},
     },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    organization: {
-      model: "organizations",
-      required: true,
-      description: "Organization of the user.",
-    },
-    user: {
-      model: "users",
-      required: true,
-      description: "User of the organization.",
-    },
   },
 };

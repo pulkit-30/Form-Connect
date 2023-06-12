@@ -16,7 +16,7 @@ module.exports = {
     },
     expiresIn: {
       type: "string",
-      defaultsTo: "24h",
+      defaultsTo: "1h",
     },
   },
 

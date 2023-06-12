@@ -1,39 +1,46 @@
-/**
- * UserOrgRoles.js
- *
- */
+// all plugins available
 
 module.exports = {
   attributes: {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    role: {
+    name: {
       type: "string",
       required: true,
-      isIn: Object.values(sails.config.globals.USER_ROLES),
-      description: "Role of the user for an organization.",
+      description: "The name of the plugin.",
     },
-    meta: {
-      type: "json",
-      defaultsTo: {},
+    icon: {
+      type: "string",
+      required: true,
+      description: "The icon of the plugin.",
     },
+    description: {
+      type: "string",
+      required: true,
+      description: "The description of the plugin.",
+    },
+    callbackUrl: {
+      type: "string",
+      required: true,
+      description: "The callback url of the plugin.",
+    },
+    authCallbackUrl: {
+      type: "string",
+      required: true,
+      description: "The auth callback url of the plugin.",
+    },
+    clientSecret: {
+      type: "string",
+      required: true,
+      description: "The client secret of the plugin.",
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    organization: {
-      model: "organizations",
-      required: true,
-      description: "Organization of the user.",
-    },
-    user: {
-      model: "users",
-      required: true,
-      description: "User of the organization.",
-    },
   },
 };

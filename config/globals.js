@@ -48,8 +48,32 @@ module.exports.globals = {
 
   sails: true,
 
-  userRoles: {
+  /****************************************************************************
+   *
+   * Custom global variables
+   *
+   ****************************************************************************/
+
+  PUBLISH_FORM_TOKEN_EXPIRY: "100d",
+  PUBLISH_FORM_TOKEN_SECRET: "some-secret=1234",
+  PLUGIN_TOKEN_SERET: "some-secret-123",
+
+  USER_ROLES: {
     owner: "owner",
     collaborator: "collaborator",
+  },
+  PUBLICATION_STATUS: {
+    DRAFT: "draft",
+    PUBLISHED: "published",
+    ARCHIVED: "archived",
+  },
+  FIELD_TYPES: {
+    TEXT: "text",
+    NUMBER: "number",
+    TELEPHONE: "tel",
+    EMAIL: "email",
+    PASSWORD: "password",
+    DATE: "date",
+    TIME: "time",
   },
 };

@@ -1,5 +1,5 @@
 /**
- * UserOrgRoles.js
+ * Publications.js
  *
  */
 
@@ -8,15 +8,19 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    role: {
-      type: "string",
-      required: true,
-      isIn: Object.values(sails.config.globals.USER_ROLES),
-      description: "Role of the user for an organization.",
-    },
     meta: {
       type: "json",
       defaultsTo: {},
+    },
+    status: {
+      type: "string",
+      isIn: Object.values(sails.config.globals.PUBLICATION_STATUS),
+      defaultsTo: sails.config.globals.PUBLICATION_STATUS.DRAFT,
+      description: "Status of the publication.",
+    },
+    token: {
+      type: "string",
+      description: "Token of the publication.",
     },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -25,15 +29,16 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+    form: {
+      model: "forms",
+      required: true,
+      description: "The form that owns this field.",
+    },
     organization: {
       model: "organizations",
       required: true,
-      description: "Organization of the user.",
-    },
-    user: {
-      model: "users",
-      required: true,
-      description: "User of the organization.",
+      description: "The organization that owns this field.",
     },
   },
 };

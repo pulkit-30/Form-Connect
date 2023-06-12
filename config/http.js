@@ -29,6 +29,7 @@ module.exports.http = {
 
     order: [
       "jwtAuth",
+      "pluginAuth",
       // "cookieParser",
       // "session",
       "bodyParser",
@@ -66,17 +67,21 @@ module.exports.http = {
 
             if (/^Bearer$/i.test(scheme)) {
               const token = credentials;
+
               if (token) {
                 const data = await sails.helpers.tokens.verifyToken(token);
                 if (!data) {
                   return next();
                 }
+
                 const loggedInUser = await Users.findOne({
                   id: data.user,
                 }).populate("roles");
+
                 if (!loggedInUser) {
                   return next();
                 }
+
                 // await Tokens.setExpiry({
                 //   user: loggedInUser.id,
                 //   token,
@@ -99,6 +104,21 @@ module.exports.http = {
           }
         }
 
+        return next();
+      };
+    })(),
+    pluginAuth: (function () {
+      return async function (req, res, next) {
+        const { "client-secret": clientSecret } = req.headers;
+        if (clientSecret) {
+          const plugin = await Plugins.findOne({ clientSecret });
+          req.plugin = plugin;
+          if (plugin) {
+            return next();
+          }
+        }
+        //--•
+        // Otherwise, this request did not come from a logged-in user.
         return next();
       };
     })(),

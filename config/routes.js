@@ -8,6 +8,10 @@
  * https://sailsjs.com/anatomy/config/routes-js
  */
 
+const organization = "orgId";
+const form = "formId";
+const formToken = "token";
+
 module.exports.routes = {
   /***************************************************************************
    *                                                                          *
@@ -23,6 +27,43 @@ module.exports.routes = {
   "POST /v1/auth/register": { action: "auth/register" },
   "GET /v1/user/me": { action: "user/me" },
   "DELETE /v1/user/logout": { action: "user/logout" },
+  "GET /v1/user/organizations": { action: "user/userOrgs/list" },
+
+  // response form routes
+  "POST /v1/response/form/": {
+    action: "response/form/get",
+  },
+  // response form routes
+  "POST /v1/response/form/save": {
+    action: "response/form/save",
+  },
+
+  // organization form routes
+  [`GET /v1/organization/:${organization}/forms`]: {
+    action: "organization/form/list",
+  },
+  [`GET /v1/organization/:${organization}/form/:${form}`]: {
+    action: "organization/form/get",
+  },
+  [`POST /v1/organization/:${organization}/form/draft`]: {
+    action: "organization/form/draft",
+  },
+  [`POST /v1/organization/:${organization}/form/publish`]: {
+    action: "organization/form/publish",
+  },
+  [`GET /v1/organization/:${organization}/form/:${form}/plugins`]: {
+    action: "organization/form/plugins",
+  },
+  [`DELETE /v1/organization/:${organization}/form/:${form}/archive`]: {
+    action: "organization/form/archive",
+  },
+
+  // plugins
+  "GET /v1/plugins": { action: "plugins/list" },
+  // plugin authentication
+  "POST /v1/plugin/auth": { action: "plugins/auth/index" },
+  // plugin form authentication
+  "POST /v1/plugin/form": { action: "plugins/form/index" },
 
   /***************************************************************************
    *                                                                          *

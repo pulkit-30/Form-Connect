@@ -1,5 +1,5 @@
 /**
- * UserOrgRoles.js
+ * Forms.js
  *
  */
 
@@ -8,11 +8,15 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    role: {
+    name: {
       type: "string",
       required: true,
-      isIn: Object.values(sails.config.globals.USER_ROLES),
-      description: "Role of the user for an organization.",
+      description: "Name of the org form.",
+    },
+    description: {
+      type: "string",
+      required: true,
+      description: "Description of the org form.",
     },
     meta: {
       type: "json",
@@ -28,12 +32,26 @@ module.exports = {
     organization: {
       model: "organizations",
       required: true,
-      description: "Organization of the user.",
+      description: "The organization that owns this form.",
     },
-    user: {
-      model: "users",
-      required: true,
-      description: "User of the organization.",
+    fields: {
+      collection: "fields",
+      via: "form",
+      description: "The fields that belong to this form.",
+    },
+    responses: {
+      collection: "responses",
+      via: "form",
+      description: "The responses that belong to this form.",
+    },
+    publication: {
+      model: "publications",
+      description: "The publications that belong to this form.",
+    },
+    plugins: {
+      collection: "formplugins",
+      via: "form",
+      description: "The plugins that belong to this form.",
     },
   },
 };

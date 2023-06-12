@@ -1,5 +1,5 @@
 /**
- * UserOrgRoles.js
+ * Fields.js
  *
  */
 
@@ -8,11 +8,36 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    role: {
+    label: {
       type: "string",
       required: true,
-      isIn: Object.values(sails.config.globals.USER_ROLES),
-      description: "Role of the user for an organization.",
+      description: "Name of the org form.",
+    },
+    description: {
+      type: "string",
+      required: true,
+      description: "Description of the org form.",
+    },
+    isRequired: {
+      type: "boolean",
+      defaultsTo: false,
+      description: "Is this field required?",
+    },
+    placeholder: {
+      type: "string",
+      defaultsTo: "",
+      description: "Placeholder text for the field.",
+    },
+    defaultValue: {
+      type: "string",
+      defaultsTo: "",
+      description: "Default value for the field.",
+    },
+    type: {
+      type: "string",
+      isIn: Object.values(sails.config.globals.FIELD_TYPES),
+      required: true,
+      description: "Type of the field.",
     },
     meta: {
       type: "json",
@@ -25,15 +50,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    organization: {
-      model: "organizations",
+    form: {
+      model: "forms",
       required: true,
-      description: "Organization of the user.",
-    },
-    user: {
-      model: "users",
-      required: true,
-      description: "User of the organization.",
+      description: "The form that owns this field.",
     },
   },
 };
