@@ -23,7 +23,7 @@ module.exports.policies = {
   "organization/*": "is-org-member",
 
   // responses
-  "response/*": "is-public-endpoint",
+  "response/*": "is-form-response",
 
   // plugins
   "plugins/list": "is-public-endpoint",
