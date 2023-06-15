@@ -22,7 +22,9 @@ module.exports = {
   fn: async function ({ formId }, exits) {
     const form = await Forms.findOne({
       id: formId,
-    }).populate("publication");
+    })
+      .populate("publication")
+      .populate("fields");
 
     if (
       !form ||

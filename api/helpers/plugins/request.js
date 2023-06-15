@@ -22,20 +22,26 @@ module.exports = {
     const allPlugins = await FormPlugins.find({ form: req.formId }).populate(
       "plugin"
     );
-    for (const { plugin, organization } of allPlugins) {
-      await axios(plugin.callbackUrl, {
-        method: "POST",
-        data: {
-          ...req,
-          type: "responseData",
-          form: req.formId,
-          organization: organization,
-        },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    try {
+      for (const { plugin, organization } of allPlugins) {
+        await axios(plugin.callbackUrl, {
+          method: "POST",
+          data: {
+            ...req,
+            type: "responseData",
+            form: req.formId,
+            organization: organization,
+          },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
-    return {};
+    return {
+      success: true,
+    };
   },
 };
