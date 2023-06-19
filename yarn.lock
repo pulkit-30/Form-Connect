@@ -95,7 +95,7 @@
     mkdirp "0.5.6"
     underscore "1.13.1"
 
-"@sailshq/socket.io-redis@^5.2.0":
+"@sailshq/socket.io-redis@^5.2.1":
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/@sailshq/socket.io-redis/-/socket.io-redis-5.2.1.tgz#cad9744713b00f99dddf02a7410beeaa2770f761"
   integrity sha512-ucQfoDPigpC1qRfVYsm2lAz/jWW1NVuSS6gIGdKsF0WiB9CbFJeYIwhdfUtjWxaW1Mf73nkSd/FHo4lLOXM7jg==

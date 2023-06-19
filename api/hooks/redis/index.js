@@ -12,6 +12,7 @@ module.exports = function defineRedisHook(sails) {
      * Runs when this Sails app loads/lifts.
      */
     initialize: async function () {
+      console.log("Initializing custom hook (`redis`)", sails.config.redisUrl);
       sails.log.info("Initializing custom hook (`redis`)");
       const client = createClient({
         url: sails.config.redisUrl,
