@@ -19,7 +19,8 @@
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^2.0.1",
     "sails-redis": "^1.0.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "nodemon": "^2.0.22"
   },
   "devDependencies": {
     "eslint": "5.16.0"
@@ -36,8 +37,5 @@
     "url": "git://github.com/pulkitgupta/backend.git"
   },
   "author": "pulkitgupta",
-  "license": "",
-  "engines": {
-    "node": "^17.9"
-  }
+  "license": ""
 }

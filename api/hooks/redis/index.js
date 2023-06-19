@@ -16,11 +16,7 @@ module.exports = function defineRedisHook(sails) {
       const client = createClient({
         url: sails.config.redisUrl,
       });
-      client.on("error", async (err) =>
-        sails.helpers.sentry.error(err, {
-          component: "hooks-redis",
-        })
-      );
+      client.on("error", async (err) => console.log(err));
 
       sails.config.redisClient = client;
       return client.connect();

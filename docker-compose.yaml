@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:alpine
+  mongodb:
+    image: mongo:6
+    volumes:
+      - form-connect-server:/data/db
+  form-connect-server:
+    build:
+      context: .
+      tags:
+        - "form-connect-server:latest"
+    volumes:
+      - /app/node_modules/
+      - .:/app/
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mongodb
+      - redis
+
+volumes:
+  form-connect-server:
