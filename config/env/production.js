@@ -75,7 +75,7 @@ module.exports = {
   security: {
     cors: {
       allRoutes: true,
-      allowOrigins: ["https://form-connect-client.vercel.app/"],
+      allowOrigins: ["https://form-connect-client.vercel.app"],
       allowCredentials: false,
       allowRequestHeaders: "content-type,authorization",
     },
@@ -293,7 +293,7 @@ module.exports = {
    *                                                                         *
    ***************************************************************************/
   custom: {
-    baseUrl: "https://form-connect-client.vercel.app/auth/login",
+    baseUrl: "https://form-connect-client.vercel.app",
     internalEmailAddress: "support@example.com",
 
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
