@@ -51,7 +51,6 @@ module.exports = {
         message: "User is not an owner",
       });
     }
-
     return exits.success(organization);
   },
 };

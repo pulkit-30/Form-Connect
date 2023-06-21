@@ -20,7 +20,8 @@ module.exports.policies = {
   "user/*": "is-logged-in",
 
   // organization
-  "organization/*": "is-org-member",
+  // "organization/*": "is-org-member",
+  "organization/form/*": "is-form-request",
 
   // responses
   "response/*": "is-form-response",

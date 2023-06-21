@@ -7,6 +7,10 @@ module.exports = {
       type: "json",
       required: true,
     },
+    type: {
+      type: "string",
+      required: true,
+    },
   },
 
   exits: {
@@ -15,9 +19,12 @@ module.exports = {
     },
   },
 
-  fn: async function ({ req }) {
-    if (!req.formId) {
-      return { error: "formId is required" };
+  fn: async function ({ req, type }) {
+    if (type === "responseData" && !req.formId) {
+      return {
+        success: false,
+        message: "Missing formId",
+      };
     }
     const allPlugins = await FormPlugins.find({ form: req.formId }).populate(
       "plugin"
@@ -27,9 +34,9 @@ module.exports = {
         await axios(plugin.callbackUrl, {
           method: "POST",
           data: {
-            ...req,
-            type: "responseData",
-            form: req.formId,
+            data: req,
+            type,
+            form: req.formId || req.form.id,
             organization: organization,
           },
           headers: {
