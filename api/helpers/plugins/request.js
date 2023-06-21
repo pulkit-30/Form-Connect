@@ -26,9 +26,12 @@ module.exports = {
         message: "Missing formId",
       };
     }
-    const allPlugins = await FormPlugins.find({ form: req.formId }).populate(
-      "plugin"
-    );
+    const allPlugins =
+      ((req.formId || req.form.id) &&
+        (await FormPlugins.find({
+          form: req.formId || req.form.id,
+        }).populate("plugin"))) ||
+      [];
     try {
       for (const { plugin, organization } of allPlugins) {
         await axios(plugin.callbackUrl, {
