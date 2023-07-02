@@ -77,7 +77,7 @@ module.exports = {
       allRoutes: true,
       allowOrigins: [
         "https://form-connect-client.vercel.app",
-        "https://form-connect-admin.vercel.app/login",
+        "https://form-connect-admin.vercel.app",
       ],
       allowCredentials: false,
       allowRequestHeaders: "content-type,authorization",
