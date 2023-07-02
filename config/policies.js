@@ -15,8 +15,14 @@ module.exports.policies = {
    * (`true` allows public access)                                            *
    *                                                                          *
    ***************************************************************************/
+  // "*": true,
+  // public endpoint
+  "admin/login": true,
 
-  // '*': true,
+  // admin
+  "admin/*": "is-platform-admin",
+
+  // users
   "user/*": "is-logged-in",
 
   // organization

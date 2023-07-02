@@ -99,6 +99,7 @@ module.exports.http = {
                   return next();
                 }
                 req.me = loggedInUser;
+                req.adminRequest = data.role === "platform_admin";
               }
             }
           }

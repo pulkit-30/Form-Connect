@@ -75,7 +75,10 @@ module.exports = {
   security: {
     cors: {
       allRoutes: true,
-      allowOrigins: ["https://form-connect-client.vercel.app"],
+      allowOrigins: [
+        "https://form-connect-client.vercel.app",
+        "https://form-connect-admin.vercel.app/login",
+      ],
       allowCredentials: false,
       allowRequestHeaders: "content-type,authorization",
     },
@@ -313,4 +316,6 @@ module.exports = {
   redisUrl: process.env.REDIS_URL,
   userSessionInvalidateLimitSeconds:
     process.env.USER_SESSION_INVALIDATELIMIT_SECONDS,
+  platformAdminEmail: process.env.PLATFORM_ADMIN_EMAIL,
+  platformAdminRole: process.env.PLATFORM_ADMIN_ROLE,
 };

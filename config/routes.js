@@ -65,6 +65,12 @@ module.exports.routes = {
   // plugin form authentication
   "POST /v1/plugin/form": { action: "plugins/form/index" },
 
+  // admin routes
+  "POST /v1/admin/login": { action: "admin/login" },
+  "GET /v1/admin/overview": { action: "admin/index" },
+  "GET /v1/admin/forms": { action: "admin/forms" },
+  "GET /v1/admin/recent": { action: "admin/recent-forms" },
+
   /***************************************************************************
    *                                                                          *
    * More custom routes here...                                               *
